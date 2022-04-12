@@ -35,7 +35,7 @@ func (comp) Complete(x bonzai.Command, args ...string) []string {
 
 	// if has completer, delegate
 	if c := x.GetComp(); c != nil {
-		return c(x, args...)
+		return c.Complete(x, args...)
 	}
 
 	// not sure we've completed the command name itself yet
