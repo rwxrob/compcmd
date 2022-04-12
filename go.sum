@@ -1,2 +1,6 @@
 github.com/rwxrob/bonzai v0.7.0 h1:x1iBkldLLdTrQBK4pF6Vx1bvkOHtuBPfQXEw6hDp7Ug=
 github.com/rwxrob/bonzai v0.7.0/go.mod h1:tOU8sGI8dxVmGFTaqMfGbqYfWJqIAaFPA1lLUXQJaY8=
+github.com/rwxrob/fn v0.3.3 h1:ymRQGWDhrrvoHKXLJ4WZlgI2qrC7gMOotowQMGvwmVQ=
+github.com/rwxrob/fn v0.3.3/go.mod h1:omPqOqEB+dDna09z5pi5YFxq4IZqDvv3wFPUCES5LvY=
+github.com/rwxrob/structs v0.5.1 h1:epff+4ihej+EgsQx0qOAS/cn7ix3qSLor0M/AjWiV3M=
+github.com/rwxrob/structs v0.5.1/go.mod h1:e888JzBSTrMMizNYFnk426F77QneVUKgdxM5inMHErY=
