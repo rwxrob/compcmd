@@ -31,7 +31,7 @@ type comp struct{}
 //        Hidden list and HasPrefix matching the first arg
 //
 // See bonzai.Completer.
-func (Completer) Complete(x bonzai.Command, args ...string) []string {
+func (comp) Complete(x bonzai.Command, args ...string) []string {
 
 	// if has completer, delegate
 	if c := x.GetComp(); c != nil {
