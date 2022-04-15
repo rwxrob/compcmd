@@ -3,7 +3,7 @@ module github.com/rwxrob/compcmd
 go 1.18
 
 require (
-	github.com/rwxrob/bonzai v0.10.0
+	github.com/rwxrob/bonzai v0.10.1
 	github.com/rwxrob/fn v0.3.3
 	github.com/rwxrob/structs v0.6.0
 )
