@@ -47,6 +47,7 @@ func (comp) Complete(x bonzai.Command, args ...string) []string {
 	list := []string{}
 	list = append(list, x.GetCommandNames()...)
 	list = append(list, x.GetParams()...)
+	list = append(list, x.GetShortcuts()...)
 	list = set.Minus[string, string](list, x.GetHidden())
 
 	if len(args) == 0 {
