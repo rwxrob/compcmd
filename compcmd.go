@@ -1,5 +1,4 @@
 /*
-
 Package compcmd is a completion driver for Bonzai command trees and
 fulfills the bonzai.Completer package interface. See Complete method for
 details.
@@ -20,39 +19,46 @@ type comp struct{}
 
 // Complete resolves completion as follows:
 //
-//     1. If leaf has Comp function, delegate to it
+//  1. If leaf has Comp function, delegate to it
 //
-//     2. If leaf has no arguments, return all Commands and Params
+//  2. If leaf has no arguments, return all Commands and Params
 //
-//     3. If first argument is the name of a Command return it only even
-//        if in the Hidden list
+//  3. If first argument is the name of a Command return it, even if it
+//     is in the Hidden list
 //
-//     4. Otherwise, return every Command or Param that is not in the
-//        Hidden list and HasPrefix matching the first arg
+//  4. If nargs == 1, append command names, shortcuts and params to the
+//     list. Otherwise, only append params.
+//
+//  5. Remove hidden and duplicate params from the list, if any.
+//
+//  6. Return all the items in the list that HasPrefix matching the
+//     first arg.
 //
 // See bonzai.Completer.
 func (comp) Complete(x bonzai.Command, args ...string) []string {
-
 	// if has completer, delegate
 	if c := x.GetComp(); c != nil {
 		return c.Complete(x, args...)
 	}
 
+	nargs := len(args)
+
 	// not sure we've completed the command name itself yet
-	if len(args) == 0 {
+	if nargs == 0 {
 		return []string{x.GetName()}
 	}
 
-	// build list of visible commands and params
-	list := []string{}
-	list = append(list, x.GetCommandNames()...)
+	//	build list of visible commands and params
+	var list []string
 	list = append(list, x.GetParams()...)
-	list = append(list, x.GetShortcuts()...)
-	list = set.Minus[string, string](list, x.GetHidden())
-
-	if len(args) == 0 {
-		return list
+	if nargs == 1 {
+		list = append(list, x.GetCommandNames()...)
+		list = append(list, x.GetShortcuts()...)
 	}
 
-	return filt.HasPrefix(list, args[0])
+	// remove hidden and duplicate params
+	min := append(x.GetHidden(), args[:nargs]...)
+	list = set.Minus[string, string](list, min)
+
+	return filt.HasPrefix(list, args[nargs-1])
 }
