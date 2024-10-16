@@ -1,5 +1,7 @@
 # 🌳 Go Bonzai™ Command Completer
 
+***Deprecated and unsupported.*** This module has been bundled as `z/internal` within the [Bonzai repo itself](https://github.com/rwxrob/bonzai).
+
 [![GoDoc](https://godoc.org/github.com/rwxrob/compcmd?status.svg)](https://godoc.org/github.com/rwxrob/compcmd)
 [![License](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](LICENSE)
 
